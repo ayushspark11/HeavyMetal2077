@@ -1,3 +1,4 @@
 import json
 
-def 
+def loadMechConfig(configId):
+    print("test " + configId)
