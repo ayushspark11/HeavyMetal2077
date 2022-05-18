@@ -1,5 +1,4 @@
 APPNAME = "Heavy Metal 2077"
-#from model.mechModel.mech import Mech
 import model.mechModel.mech as mechmodel
 import service.mechSheetController as msc
 from PyQt6 import QtWidgets
