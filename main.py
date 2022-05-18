@@ -2,9 +2,8 @@ APPNAME = "Heavy Metal 2077"
 #from model.mechModel.mech import Mech
 import model.mechModel.mech as mechmodel
 import service.mechSheetController as msc
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import *
-import sys
+import model.frontend.window as fe #needs to be imported to cause the UI to showup
+
 
 #TODO:
 #request windows permission: EXTREMELY IMPORTANT (request local storage access)
@@ -18,24 +17,5 @@ import sys
 #generate pdf based on config from memory or from editor
 msc.loadMechConfig("testid")
 
-def saveTestMech():
-    testMech = mechmodel.Mech()
-    testMech.head.armor = 7
+# Git Got I actually did something
 
-    msc.saveMechConfig("testid", testMech)
-
-def window():
-    app = QApplication(sys.argv)
-    win = QMainWindow()
-    win.setGeometry(300, 200, 300, 200)
-    win.setWindowTitle("Heavy Metal 2077")
-
-    label = QtWidgets.QLabel(win)
-    label.setText("Biggus Dickus")
-    label.move(150, 100)
-
-    win.show()
-    sys.exit(app.exec_())
-
-saveTestMech()
-window()

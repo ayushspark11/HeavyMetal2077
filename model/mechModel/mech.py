@@ -47,11 +47,11 @@ class Mech:
 
     def asDict(self):
         dict_op = self.__dict__
-        print(dict_op)
+        #print(dict_op)
 
         for item in dict_op:
-            print(item)
+            #print(item)
             dict_op[item] = dict_op[item].__dict__
         #dict["children"] = [child.__dict__ for child in dict["children"]]
-        print(dict_op)
+        #print(dict_op)
         return dict_op

@@ -8,4 +8,4 @@ def loadMechConfig(configId):
 def saveMechConfig(configId, mech):
     #convert mech model into json format and save to memory
     json_string = json.dumps(mech.asDict())
-    print(json_string)
+    #print(json_string)
