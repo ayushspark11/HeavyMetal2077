@@ -2,8 +2,8 @@ APPNAME = "Heavy Metal 2077"
 #from model.mechModel.mech import Mech
 import model.mechModel.mech as mechmodel
 import service.mechSheetController as msc
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import *
+from PyQt6 import QtWidgets
+from PyQt6.QtWidgets import *
 import sys
 
 #TODO:
@@ -35,7 +35,7 @@ def window():
     label.move(150, 100)
 
     win.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
 
 saveTestMech()
 window()
