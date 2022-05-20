@@ -1,5 +1,13 @@
 import json
 import model.mechModel.mech as mechmodel
+import os
+
+savedConfigPath = "savedConfigs/"
+try:
+    os.mkdir("savedConfigs/")
+    print("savedConfig directory created")
+except FileExistsError as error:
+    print("savedConfig directory exists")
 
 def loadMechConfig(configId):
     print("test " + configId)
@@ -8,6 +16,9 @@ def loadMechConfig(configId):
 def saveMechConfig(configId, mech):
     #convert mech model into json format and save to memory
     json_string = json.dumps(getDictHierarchy(mech))
+    save_path = os.path.join(savedConfigPath, configId+".json")
+    mechConfigFile = open(save_path, "w+")
+    mechConfigFile.write(json_string)
 
 def getDictHierarchy(item):
     dict_op = item.__dict__
