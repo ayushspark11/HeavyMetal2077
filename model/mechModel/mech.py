@@ -1,34 +1,8 @@
-from collections import namedtuple
+import json
 from . import part
 
 class Mech:
-#TODO: refactor as named tuple
-    class Component:
-        name = None
-        type = None
-        size = None
-        isDestroyed = False
-        range = None
-        heat = None
-        damage = None
-        ammo = None
-        pilotingModifier = None
-        movementModifier = None
-        gunneryModifier = None
-        forceTest = None
-        #TODO: determine where modifiers affect
-        effectDistance = None
-
-    #class Part:
-    #    def __init__(self):
-    #        self.armor = None
-    #        self.structure = None
-    #        self.compartments = None
-    #        self.components = None
-
-        #def __dict__(self):
-        #    return self.__dict__
-
+#TODO: consider refactor as named tuple
     def __init__(self):
         self.head = part.Part()
         self.centerTorso = part.Part()
@@ -38,20 +12,17 @@ class Mech:
         self.rightArm = part.Part()
         self.leftLeg = part.Part()
         self.rightLeg = part.Part()
-        #walk = None
-        #run = None
-        #jump = None
-        #tonnage = None
-        #cost = None
-        #battleValue = None
+        self.walk = None
+        self.run = None
+        self.jump = None
+        self.tonnage = None
+        self.cost = None
+        self.battleValue = None
 
-    def asDict(self):
-        dict_op = self.__dict__
-        print(dict_op)
-
-        for item in dict_op:
-            print(item)
-            dict_op[item] = dict_op[item].__dict__
-        #dict["children"] = [child.__dict__ for child in dict["children"]]
-        print(dict_op)
-        return dict_op
+    def loadFromJson(self, j):
+        self.__dict__ = json.load(j)
+        for item in self.__dict__:
+            if isinstance(self.__dict__[item], dict):
+                part_op = part.Part()
+                part_op.loadFromDict(self.__dict__[item])
+                self.__dict__[item] = part_op
