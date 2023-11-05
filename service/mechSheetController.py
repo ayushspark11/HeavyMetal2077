@@ -10,8 +10,13 @@ except FileExistsError as error:
     print("savedConfig directory exists")
 
 def loadMechConfig(configId):
-    print("test " + configId)
     #pull json from memory and convert into mech model
+    config = open(savedConfigPath + configId+".json")
+    try:
+        newMech = mechmodel.Mech()
+        newMech.loadFromJson(config)
+    finally:
+        config.close()
 
 def saveMechConfig(configId, mech):
     #convert mech model into json format and save to memory

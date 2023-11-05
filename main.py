@@ -33,8 +33,8 @@ def window():
     label.setText("Biggus Dickus")
     label.move(150, 100)
 
-    win.show()
+    #win.show()
     sys.exit(app.exec())
 
 saveTestMech()
-window()
+#window()

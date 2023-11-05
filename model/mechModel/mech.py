@@ -1,4 +1,4 @@
-from collections import namedtuple
+import json
 from . import part
 
 class Mech:
@@ -18,3 +18,11 @@ class Mech:
         self.tonnage = None
         self.cost = None
         self.battleValue = None
+
+    def loadFromJson(self, j):
+        self.__dict__ = json.load(j)
+        for item in self.__dict__:
+            if isinstance(self.__dict__[item], dict):
+                part_op = part.Part()
+                part_op.loadFromDict(self.__dict__[item])
+                self.__dict__[item] = part_op
